@@ -65,22 +65,22 @@
 
 <div class="tech-marquee">
   <div class="marquee-track">
-    <div class="marquee-item"><img src="html5.svg"> HTML5</div>
-    <div class="marquee-item"><img src="css3.svg"> CSS3</div>
-    <div class="marquee-item"><img src="javascript.svg"> JavaScript</div>
-    <div class="marquee-item"><img src="react.svg"> React.js</div>
-    <div class="marquee-item"><img src="nextjs.svg" style="background:white;border-radius:50%;padding:2px"> Next.js</div>
-    <div class="marquee-item"><img src="typescript.svg"> TypeScript</div>
-    <div class="marquee-item"><img src="angular.svg"> Angular</div>
-    <div class="marquee-item"><img src="python.svg"> Python</div>
-    <div class="marquee-item"><img src="/vscode.svg"> VS Code</div>
-    <div class="marquee-item"><img src="/shopify.svg"> Shopify</div>
+    <div class="marquee-item"><img src="icons/html5.svg"> HTML5</div>
+    <div class="marquee-item"><img src="icons/css3.svg"> CSS3</div>
+    <div class="marquee-item"><img src="icons/javascript.svg"> JavaScript</div>
+    <div class="marquee-item"><img src="icons/react.svg"> React.js</div>
+    <div class="marquee-item"><img src="icons/nextjs.svg" style="background:white;border-radius:50%;padding:2px"> Next.js</div>
+    <div class="marquee-item"><img src="icons/typescript.svg"> TypeScript</div>
+    <div class="marquee-item"><img src="icons/angular.svg"> Angular</div>
+    <div class="marquee-item"><img src="icons/python.svg"> Python</div>
+    <div class="marquee-item"><img src="icons/vscode.svg"> VS Code</div>
+    <div class="marquee-item"><img src="icons/shopify.svg"> Shopify</div>
     <!-- duplicate -->
-    <div class="marquee-item"><img src="html5.svg"> HTML5</div>
-    <div class="marquee-item"><img src="css3.svg"> CSS3</div>
-    <div class="marquee-item"><img src="javascript.svg"> JavaScript</div>
-    <div class="marquee-item"><img src="react.svg"> React.js</div>
-    <div class="marquee-item"><img src="nextjs.svg" style="background:white;border-radius:50%;padding:2px"> Next.js</div>
+    <div class="marquee-item"><img src="icons/html5.svg"> HTML5</div>
+    <div class="marquee-item"><img src="icons/css3.svg"> CSS3</div>
+    <div class="marquee-item"><img src="icons/javascript.svg"> JavaScript</div>
+    <div class="marquee-item"><img src="icons/react.svg"> React.js</div>
+    <div class="marquee-item"><img src="icons/nextjs.svg" style="background:white;border-radius:50%;padding:2px"> Next.js</div>
   </div>
 </div>
 
@@ -143,7 +143,7 @@
         <div class="socials">
           <a href="https://github.com" target="_blank">GH</a>
           <a href="https://www.linkedin.com/in/adeniyi-adeniran-6919631b5/" target="_blank">in</a>
-          <a href="/cdn-cgi/l/email-protection#80ede1eee4e9e2ece5f3efecf5f4e9efeec0e7ede1e9ecaee3efed">✉</a>
+          <a href="#" class="email-link email-icon" data-user="mandiblesolution" data-domain="gmail.com" title="Email us">✉️</a>
           <a href="tel:+2347036251901">☎</a>
         </div>
       </div>
@@ -170,7 +170,7 @@
       <div class="footer-col">
         <h4>Contact Details</h4>
         <ul>
-          <li><a href="/cdn-cgi/l/email-protection#0b666a656f6269676e7864677e7f6264654b6c666a626725686466">📧 <span class="__cf_email__" data-cfemail="187579767c717a747d6b77746d6c717776587f75797174367b7775">[email&#160;protected]</span></a></li>
+          <li><a href="#" class="email-link" data-user="mandiblesolution" data-domain="gmail.com"><span class="__cf_email__" data-cfemail="96fbf7f8f2fff4faf3e5f9fae3e2fff9f8d6f1fbf7fffab8f5f9fb">[email&#160;protected]</span></a></li>
           <li><a href="tel:+2347036251901">📞 +234 (0) 703 625 1901</a></li>
           <li style="color:var(--muted);font-size:14px">📍 No 3 Ori Osoko<br>Kemta, Abeokuta<br>Ogun State, Nigeria</li>
           <li style="margin-top:8px"><span class="badge-live">● Available for hire</span></li>
@@ -189,5 +189,40 @@ const hamburger=document.getElementById('hamburger');const navLinks=document.get
 hamburger.addEventListener('click',()=>navLinks.classList.toggle('open'));
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 </script>
-</body>
+
+<script>
+// Fix Cloudflare Email Protection - bypass - keeps mailto clickable
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.email-link').forEach(function(el){
+    var user = el.getAttribute('data-user');
+    var domain = el.getAttribute('data-domain');
+    if(!user || !domain) return;
+    var email = user + '@' + domain;
+    // If it's an icon, keep icon but make clickable
+    if(el.classList.contains('email-icon')){
+      el.href = 'mailto:' + email;
+    } else {
+      el.textContent = email;
+      el.href = 'mailto:' + email;
+    }
+  });
+  document.querySelectorAll('.email-text').forEach(function(el){
+    var user = el.getAttribute('data-user');
+    var domain = el.getAttribute('data-domain');
+    if(!user || !domain) return;
+    var email = user + '@' + domain;
+    // Create clickable link from span
+    var a = document.createElement('a');
+    a.href = 'mailto:' + email;
+    a.className = 'email-link';
+    a.setAttribute('data-user', user);
+    a.setAttribute('data-domain', domain);
+    a.textContent = email;
+    a.style.color = 'var(--text)';
+    el.parentNode.replaceChild(a, el);
+  });
+});
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2807548b8ce9fe4',t:'MTc4NjIxMjQxOQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
 </html>
